@@ -55,9 +55,7 @@ def export_variants_inventory_to_csv():
     try:
         print(f"---***--- Inventory CSV generation task running ---***---")
 
-        public_folder = "./public/"
-        exported_file_name = f"inventory_variants_{datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}.csv"
-        final_path_file = f"{public_folder}{exported_file_name}"
+        final_path_file = f"./public/inventory_variants_{datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}.csv"
         variant_count = 0
         
         # CSV writing setup
@@ -84,7 +82,7 @@ def export_variants_inventory_to_csv():
             while is_continue:
                 query = f"""
                 {{
-                    productVariants(first: 1, {f'after: "{cursor}", ' if cursor else ''}) {{
+                    productVariants(first: 245, {f'after: "{cursor}", ' if cursor else ''}) {{
                         pageInfo {{
                             hasNextPage
                         }}
