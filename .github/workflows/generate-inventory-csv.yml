@@ -2,12 +2,13 @@ name: generate-inventory-csv
 
 on:
   push:
-  schedule:
-    - cron: '0 * * * *'
-    - cron: '15 * * * *'
-    - cron: '30 * * * *'    
-    - cron: '45 * * * *'
-    - cron: '55 * * * *'
+  # enable it to automatically run the job at regular intervals
+  # schedule:
+  #   - cron: '0 * * * *'
+  #   - cron: '15 * * * *'
+  #   - cron: '30 * * * *'    
+  #   - cron: '45 * * * *'
+  #   - cron: '55 * * * *'
   
 concurrency:
   group: "generate-inventory-csv"
