@@ -1,5 +1,3 @@
 .env
 */.env
-public/*
-*/public/*
 generate-inventory-org.yml
