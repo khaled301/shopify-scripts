@@ -1,0 +1,37 @@
+name: generate-inventory-csv
+
+on:
+  push:
+  schedule:
+    - cron: '0 * * * *'
+    - cron: '15 * * * *'
+    - cron: '30 * * * *'    
+    - cron: '45 * * * *'
+    - cron: '55 * * * *'
+  
+concurrency:
+  group: "generate-inventory-csv"
+  cancel-in-progress: false
+
+jobs: 
+  generate-inventory-csv:
+    runs-on: self-hosted
+    permissions: 
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: upgrade python
+      - uses: actions/setup-python@v5
+        with: 
+          python-version: '3.12.x'
+      - name: Update and push inventory csv
+        run: | 
+          pip install -q -r requirements.txt
+          cd inventory-export-from-store
+          python3 main.py 
+          cd ..
+          git config --global user.email "user@example.com"
+          git config --global user.name "ExampleUser"
+          git add . 
+          git diff-index --quite HEAD || git commit -m "Inventory update: `date`"
+          git push

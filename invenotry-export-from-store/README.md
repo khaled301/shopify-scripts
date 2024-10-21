@@ -18,3 +18,6 @@ SHOPIFY_API_VERSION=2024-10
 #### 4. create a directory called "public" to store the CSV
 
 #### 5. run the main.py file
+
+### Generate Inventory CSV YAML
+#### The YAML file defines the GitHub Actions workflow to automate generating and pushing an inventory CSV file to a repository at regular intervals, as well as on pushes to the repository
